@@ -1,0 +1,1521 @@
+<!doctype html>
+<html lang="en" class="h-full">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy New Year 2026</title>
+  <script src="/_sdk/element_sdk.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <style>
+    body {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      height: 100%;
+      overflow-x: hidden;
+    }
+
+    .main-wrapper {
+      width: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      height: 100%;
+    }
+
+    .galaxy-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+      z-index: -2;
+    }
+
+    .stars-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      transition: transform 0.1s ease-out;
+    }
+
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 3s infinite;
+    }
+
+    @keyframes twinkle {
+
+      0%,
+      100% {
+        opacity: 0.3;
+      }
+
+      50% {
+        opacity: 1;
+      }
+    }
+
+    .firework {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px currentColor;
+    }
+
+    .firework-trail {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+    }
+
+    .firework-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      box-shadow: 0 0 8px currentColor;
+    }
+
+    .countdown-number {
+      font-size: clamp(3rem, 12vw, 8rem);
+      font-weight: 800;
+      text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+        0 0 40px rgba(255, 215, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .countdown-number:hover {
+      transform: scale(1.1);
+    }
+
+    .countdown-label {
+      font-size: clamp(0.8rem, 2vw, 1.2rem);
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      opacity: 0.8;
+    }
+
+    .title {
+      font-size: clamp(2rem, 8vw, 5rem);
+      font-weight: 900;
+      text-shadow: 0 0 30px rgba(255, 255, 255, 0.8),
+        0 0 60px rgba(255, 215, 0, 0.5);
+      animation: glow 2s ease-in-out infinite;
+    }
+
+    .celebration-title {
+      font-size: clamp(3rem, 12vw, 7rem);
+      font-weight: 900;
+      background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24, #ff6b6b);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientShift 3s ease infinite, bounceIn 1s ease-out;
+      filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.7));
+      letter-spacing: 0.05em;
+    }
+
+    @keyframes gradientShift {
+
+      0%,
+      100% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    @keyframes bounceIn {
+      0% {
+        transform: scale(0) rotate(-10deg);
+        opacity: 0;
+      }
+
+      50% {
+        transform: scale(1.2) rotate(5deg);
+      }
+
+      100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes glow {
+
+      0%,
+      100% {
+        text-shadow: 0 0 30px rgba(255, 255, 255, 0.8), 0 0 60px rgba(255, 215, 0, 0.5);
+      }
+
+      50% {
+        text-shadow: 0 0 40px rgba(255, 255, 255, 1), 0 0 80px rgba(255, 215, 0, 0.8);
+      }
+    }
+
+    .scroll-indicator {
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(10px);
+      }
+    }
+
+    .game-card {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(147, 51, 234, 0.1));
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(236, 72, 153, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .photo-container {
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(147, 51, 234, 0.2));
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(236, 72, 153, 0.4);
+    }
+
+    .heart-float {
+      animation: floatHeart 3s ease-in-out infinite;
+    }
+
+    @keyframes floatHeart {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-20px) rotate(5deg);
+      }
+    }
+
+    .catch-button {
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .catch-button:hover {
+      transform: scale(1.05);
+    }
+
+    .memory-card {
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .memory-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .memory-card.flipped .memory-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .memory-card-front,
+    .memory-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      font-size: 2rem;
+    }
+
+    .memory-card-back {
+      transform: rotateY(180deg);
+    }
+
+    .photo-node {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      cursor: pointer;
+      transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+
+    .photo-node.zoomed {
+      position: fixed !important;
+      top: 50% !important;
+      left: 50% !important;
+      transform: translate(-50%, -50%) scale(3) !important;
+      z-index: 9999 !important;
+      filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.8));
+      width: 300px;
+      height: 300px;
+    }
+
+    .photo-node-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s ease;
+      transform-style: preserve-3d;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .photo-node.flipped .photo-node-inner {
+      transform: rotateY(180deg);
+    }
+
+    .photo-node-front,
+    .photo-node-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .photo-node-back {
+      transform: rotateY(180deg);
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      overflow: hidden;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .photo-content {
+      width: 100%;
+      height: calc(100% - 25px);
+      max-height: calc(100% - 25px);
+      object-fit: cover;
+      display: block;
+      margin: 0 auto;
+      border-radius: 0;
+      z-index: 500;
+    }
+
+    .photo-message {
+      color: white;
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 5px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 10;
+    }
+
+    .connection-line {
+      position: absolute;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(236, 72, 153, 0.4), rgba(147, 51, 234, 0.4));
+      transform-origin: left center;
+      z-index: -1;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        opacity: 0.3;
+      }
+
+      50% {
+        opacity: 0.8;
+      }
+    }
+
+    .falling-heart {
+      position: absolute;
+      font-size: 2rem;
+      cursor: pointer;
+      animation: fall linear;
+      user-select: none;
+    }
+
+    @keyframes fall {
+      to {
+        top: 100%;
+      }
+    }
+
+    .falling-heart:hover {
+      transform: scale(1.2);
+    }
+
+    .photo-network {
+      position: relative;
+      width: 100%;
+      min-height: 800px;
+      overflow: visible;
+    }
+  </style>
+  <style>
+    @view-transition {
+      navigation: auto;
+    }
+  </style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+</head>
+
+<body class="h-full">
+  <div class="galaxy-bg"></div>
+  <div class="stars-container" id="starsContainer"></div>
+  <div id="fireworksContainer"
+    style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10;"></div>
+  <div class="main-wrapper">
+    <!-- Audio element for firework sound -->
+    <audio id="fireworkSound" src="fireworksound/firework.mp3" loop></audio>
+    <!-- Mute button -->
+    <button id="muteButton"
+      class="absolute top-4 right-4 z-30 bg-white bg-opacity-20 backdrop-blur-sm text-white px-4 py-2 rounded-full font-semibold text-sm hover:bg-opacity-30 transition-all shadow-lg border border-white border-opacity-30">Mute
+      🔇</button>
+    
+    <!-- Countdown Section -->
+    <section class="w-full flex flex-col items-center justify-center text-white relative z-20"
+      style="min-height: 100%;">
+      <h1 class="title mb-12 text-center px-4" id="mainTitle">Happy New Year 2025</h1>
+      <div id="countdownContainer" class="flex gap-8 md:gap-16 flex-wrap justify-center px-4">
+        <div class="flex flex-col items-center">
+          <div class="countdown-number" id="days">
+            00
+          </div>
+          <div class="countdown-label">
+            Days
+          </div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="countdown-number" id="hours">
+            00
+          </div>
+          <div class="countdown-label">
+            Hours
+          </div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="countdown-number" id="minutes">
+            00
+          </div>
+          <div class="countdown-label">
+            Minutes
+          </div>
+        </div>
+        <div class="flex flex-col items-center">
+          <div class="countdown-number" id="seconds">
+            00
+          </div>
+          <div class="countdown-label">
+            Seconds
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator mt-16 text-center" id="scrollIndicator" style="display: none;"><button
+          class="bg-white bg-opacity-20 backdrop-blur-sm text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-opacity-30 transition-all shadow-lg border border-white border-opacity-30 flex flex-col items-center gap-2">
+          <span>Scroll Down</span> <span class="text-2xl">↓</span> </button>
+      </div>
+    </section><!-- Games Section -->
+    <section class="w-full relative z-20 py-20 px-4" id="gamesSection"
+      style="background: linear-gradient(180deg, transparent, rgba(147, 51, 234, 0.1)); display: none;">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-8 text-white" id="gameIntro">Let's Play Some Fun Games!
+          💕</h2><!-- Catch Me Button -->
+        <div class="mb-16 flex flex-col items-center justify-center" style="min-height: 300px; position: relative;">
+          <p class="text-white text-xl mb-8 text-center">First, try to click this button! 😄</p><button id="catchButton"
+            class="catch-button bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-4 rounded-full text-xl font-bold shadow-lg"
+            style="position: absolute;"> Catch Me If You Can! 💗 </button>
+        </div><!-- Games Grid -->
+        <div id="gamesGrid" style="display: none;"><!-- Stage 1: Love Meter -->
+          <div id="stage1" class="mb-16">
+            <div class="max-w-md mx-auto game-card rounded-xl p-6">
+              <h3 class="text-2xl font-bold text-pink-300 mb-4 flex items-center gap-2"><span
+                  class="heart-float">💖</span> Stage 1: Love Meter</h3>
+              <p class="text-white mb-4 opacity-80">Fill the love meter to unlock Task 1!</p>
+              <div class="bg-gray-700 rounded-full h-6 mb-4 overflow-hidden">
+                <div id="loveMeter" class="bg-gradient-to-r from-pink-500 to-red-500 h-full transition-all duration-300"
+                  style="width: 0%"></div>
+              </div>
+              <div class="text-white text-center mb-4" id="lovePercentage">
+                0%
+              </div><button id="loveMeterBtn"
+                class="w-full bg-pink-500 hover:bg-pink-600 text-white py-3 rounded-lg font-semibold transition"> Click
+                Hearts! ❤️ </button>
+            </div>
+          </div><!-- Task 1: Type the Magic Words -->
+          <div id="task1" class="mb-16" style="display: none;">
+            <div class="max-w-md mx-auto game-card rounded-xl p-6">
+              <h3 class="text-2xl font-bold text-yellow-300 mb-4 flex items-center gap-2">✨ Task 1: Type the Magic Words
+              </h3>
+              <p class="text-white mb-4 opacity-80">Type the magic phrase to unlock Stage 2...</p><input type="text"
+                id="magicWordsInput"
+                class="w-full px-4 py-3 rounded-lg bg-gray-700 text-white border-2 border-yellow-300 focus:outline-none focus:border-yellow-400 mb-2"
+                placeholder="Type here...">
+              <div id="magicWordsHint" class="text-yellow-200 text-sm mb-4 opacity-80">
+                Hint: Think about who you love! 💕
+              </div><button id="magicWordsBtn"
+                class="w-full bg-yellow-500 hover:bg-yellow-600 text-white py-3 rounded-lg font-semibold transition">
+                Submit 💬 </button>
+            </div>
+          </div><!-- Stage 2: Love Quiz -->
+          <div id="stage2" class="mb-16" style="display: none;">
+            <div class="max-w-md mx-auto game-card rounded-xl p-6">
+              <h3 class="text-2xl font-bold text-purple-300 mb-4 flex items-center gap-2"><span
+                  class="heart-float">💜</span> Stage 2: Love Quiz (MCQ)</h3>
+              <p class="text-white mb-4 opacity-80">Answer honestly about your feelings to unlock Task 2! 💕</p>
+              <div id="quizContent" class="mb-4">
+                <div class="text-white mb-3" id="quizQuestion">
+                  Ready to start?
+                </div>
+                <div id="quizOptions" class="space-y-2"></div>
+              </div>
+              <div class="bg-gray-700 rounded-full h-6 mb-2 overflow-hidden">
+                <div id="quizMeter"
+                  class="bg-gradient-to-r from-purple-500 to-pink-500 h-full transition-all duration-300"
+                  style="width: 0%"></div>
+              </div>
+              <div class="text-white text-center mb-2" id="quizScore">
+                Score: 0/8
+              </div><button id="quizStartBtn"
+                class="w-full bg-purple-500 hover:bg-purple-600 text-white py-3 rounded-lg font-semibold transition">
+                Start Quiz! 💜 </button>
+            </div>
+          </div><!-- Task 2: Heart Collector -->
+          <div id="task2" class="mb-16" style="display: none;">
+            <div class="max-w-md mx-auto game-card rounded-xl p-6">
+              <h3 class="text-2xl font-bold text-red-300 mb-4 flex items-center gap-2">❤️ Task 2: Satyam's Heart
+                Collector</h3>
+              <p class="text-white mb-4 opacity-80">Click 15 hearts with "S" in 20 seconds to unlock Stage 3!</p>
+              <div class="text-white text-center mb-4">
+                <div class="text-3xl font-bold mb-2" id="heartScore">
+                  0 / 15
+                </div>
+                <div class="text-xl" id="heartTimer">
+                  20s
+                </div>
+              </div>
+              <div id="heartCollectorArea" class="relative bg-gray-800 rounded-lg mb-4"
+                style="height: 300px; overflow: hidden;"><!-- Hearts will fall here -->
+              </div><button id="heartCollectorBtn"
+                class="w-full bg-red-500 hover:bg-red-600 text-white py-3 rounded-lg font-semibold transition"> Start
+                Collecting! 💕 </button>
+            </div>
+          </div><!-- Stage 3: Memory Match -->
+          <div id="stage3" class="mb-16" style="display: none;">
+            <div class="max-w-md mx-auto game-card rounded-xl p-6">
+              <h3 class="text-2xl font-bold text-blue-300 mb-4 flex items-center gap-2"><span
+                  class="heart-float">💙</span> Stage 3: Memory Match</h3>
+              <p class="text-white mb-4 opacity-80">Match Satyam-themed symbols to unlock Task 3!</p>
+              <div id="memoryGrid" class="grid grid-cols-3 gap-2 mb-4"></div>
+              <div class="text-white text-center mb-2" id="memoryStatus">
+                Matches: 0/3
+              </div><button id="memoryStartBtn"
+                class="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg font-semibold transition"> Start
+                Game! 🎮 </button>
+            </div>
+          </div><!-- Task 3: Final Photo Reveal -->
+          <div id="task3" class="mb-16" style="display: none;">
+            <div class="photo-container rounded-xl p-8">
+              <h3
+                class="text-5xl font-bold text-center mb-6 bg-gradient-to-r from-pink-400 via-purple-400 to-blue-400 bg-clip-text text-transparent">
+                🎊 TASK 3: ALL PHOTOS UNLOCKED! 🎊</h3>
+              <p class="text-white text-center text-xl mb-8">You completed all challenges! Here are our memories
+                together 💕</p>
+              <p class="text-white text-center mb-4 opacity-80">Click to zoom, click again to flip and see photos, double-click to
+                return! Scroll to explore! 💕</p>
+              <div class="photo-network" id="photoNetwork"><!-- Interconnected photo nodes will be here -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    // Photo data for all 12 cards
+    const photoData = [
+      { emoji: '❤️', message: 'Satyam & Shreya Forever 💕', photo: 'images/image1.jpg', gradient: 'from-pink-400 to-red-400' },
+      { emoji: '💕', message: 'Best Moments Together 💗', photo: 'images/image2.jpg', gradient: 'from-pink-400 to-red-400' },
+      { emoji: '🌹', message: 'Our Love Story 🌹', photo: 'images/image3.jpg', gradient: 'from-pink-400 to-red-400' },
+      { emoji: '💑', message: 'Together Always 💑', photo: 'images/image4.jpg', gradient: 'from-pink-400 to-red-400' },
+      { emoji: '🎉', message: 'Every Moment With You 🎉', photo: 'images/image5.jpg', gradient: 'from-purple-400 to-pink-400' },
+      { emoji: '💝', message: 'You Are My Gift 💝', photo: 'images/image6.jpg', gradient: 'from-purple-400 to-pink-400' },
+      { emoji: '🥰', message: 'You Complete Me 🥰', photo: 'images/image7.jpg', gradient: 'from-purple-400 to-pink-400' },
+      { emoji: '😍', message: 'Crazy About You 😍', photo: 'images/image8.jpg', gradient: 'from-purple-400 to-pink-400' },
+      { emoji: '🌟', message: 'You Shine Bright 🌟', photo: 'images/image9.jpg', gradient: 'from-blue-400 to-purple-400' },
+      { emoji: '✨', message: 'Sparkling Together ✨', photo: 'images/image10.jpg', gradient: 'from-blue-400 to-purple-400' },
+      { emoji: '💫', message: 'We Are Destined 💫', photo: 'images/image11.jpg', gradient: 'from-blue-400 to-purple-400' },
+      { emoji: '🎆', message: 'Celebrating Our Love 🎆', photo: 'images/image12.jpg', gradient: 'from-blue-400 to-purple-400' }
+    ];
+
+    const defaultConfig = {
+      countdown_title: "Happy New Year 2025",
+      celebration_title: "Happy New Year Shreya!",
+      game_intro_text: "Let's Play Some Fun Games! 💕",
+      primary_color: "#FFD700",
+      text_color: "#FFFFFF",
+      background_start: "#1B2735",
+      background_end: "#090A0F",
+      star_color: "#FFFFFF"
+    };
+
+    let config = { ...defaultConfig };
+    let isCelebrating = false;
+    let fireworkInterval = null;
+
+    // Game states
+    let catchAttempts = 0;
+    let loveLevel = 0;
+    let loveMeterPhase = 'normal';
+    let decreaseInterval = null;
+    let quizIndex = 0;
+    let quizCorrect = 0;
+    let quizPhase = 'normal';
+    let quizDecreaseInterval = null;
+    let memoryCards = [];
+    let memoryFlipped = [];
+    let memoryMatched = 0;
+    let heartCollectorScore = 0;
+    let heartCollectorTimer = 20;
+    let heartCollectorInterval = null;
+    let heartSpawnInterval = null;
+
+    const quizQuestions = [
+      {
+        q: "When I see your name pop up on my phone, I usually…",
+        a: ["Panic for no reason😲", "Ignore it🙄", "Smile instantly 💖", "Smile a little😁"],
+        correct: 2,
+        emoji: "💖"
+      },
+      {
+        q: "If we had no plans and all day free, I'd prefer to���",
+        a: ["Scroll endlessly🙄", "Spend the day with you 💕", "Sleep😴", "Go out separately😎"],
+        correct: 1,
+        emoji: "💕"
+      },
+      {
+        q: "What makes me miss you the most?",
+        a: ["Your messages💬", "Your food😋", "Your presence 🫶", "Your voice📞"],
+        correct: 2,
+        emoji: "🫶"
+      },
+      {
+        q: "When you're upset, my first instinct is to…",
+        a: ["Change the topic🚫", "Make things right 🤍", "Pretend it's fine😌", "Give space forever🌱"],
+        correct: 1,
+        emoji: "🤍"
+      },
+      {
+        q: "If I had to describe you in one word, it would be…",
+        a: ["Interesting🤩", "Normal🙂", "Special ✨", "Confusing🤯"],
+        correct: 2,
+        emoji: "✨"
+      },
+      {
+        q: "What do I secretly love about you?",
+        a: ["Your attitude🙂", "All of the above 😌", "Your styleFashionable", "Your habits🤗"],
+        correct: 1,
+        emoji: "😌"
+      },
+      {
+        q: "When we don't talk for a while, I feel…",
+        a: ["BusyBusy😏", "Something's missing 💭", "Relieved😌", "Indifferent😑"],
+        correct: 1,
+        emoji: "💭"
+      },
+      {
+        q: "What do I want us to have more of?",
+        a: ["Silence Quiet🤫", "ArgumentsFight👺", "Memories together 💞", "DistanceFar💩"],
+        correct: 2,
+        emoji: "💞"
+      }
+    ];
+
+    // Create photo nodes with interconnected layout
+    function createPhotoNodes() {
+      const container = document.getElementById('photoNetwork');
+      if (!container) return;
+
+      const centerX = 400;
+      const centerY = 400;
+      const radius = 250;
+
+      // Create connection lines first
+      const connections = [
+        [0, 1], [1, 2], [2, 3], [3, 4], [4, 5],
+        [5, 6], [6, 7], [7, 8], [8, 9], [9, 10],
+        [10, 11], [11, 0], [0, 6], [3, 9], [1, 7], [4, 10]
+      ];
+
+      photoData.forEach((data, idx) => {
+        const angle = (idx / photoData.length) * 2 * Math.PI - Math.PI / 2;
+        const x = centerX + radius * Math.cos(angle);
+        const y = centerY + radius * Math.sin(angle);
+
+        const node = document.createElement('div');
+        node.className = 'photo-node';
+        node.dataset.nodeId = idx;
+        node.dataset.clickCount = '0';
+        node.style.left = x + 'px';
+        node.style.top = y + 'px';
+
+        node.innerHTML = `
+          <div class="photo-node-inner">
+            <div class="photo-node-front">
+              <img src="${data.photo}" class="photo-content" alt="${data.message}" onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'bg-gradient-to-br '+data.gradient+' w-full h-full flex items-center justify-center text-white text-3xl\'>${data.emoji}</div>'" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">
+            </div>
+            <div class="photo-node-back">
+              <img src="${data.photo}" class="photo-content" alt="${data.message}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'; this.nextElementSibling.style.alignItems='center'; this.nextElementSibling.style.justifyContent='center'; this.nextElementSibling.innerText='Photo not found';">
+              <div class="photo-message">${data.message}</div>
+            </div>
+          </div>
+        `;
+
+        let clickTimeout = null;
+
+        node.addEventListener('click', function (e) {
+          e.preventDefault();
+
+          if (clickTimeout) {
+            clearTimeout(clickTimeout);
+            clickTimeout = null;
+          }
+
+          clickTimeout = setTimeout(() => {
+            handleNodeSingleClick(node);
+            clickTimeout = null;
+          }, 250);
+        });
+
+        node.addEventListener('dblclick', function (e) {
+          e.preventDefault();
+
+          if (clickTimeout) {
+            clearTimeout(clickTimeout);
+            clickTimeout = null;
+          }
+
+          handleNodeDoubleClick(node);
+        });
+
+        container.appendChild(node);
+      });
+
+      // Draw connection lines
+      connections.forEach(([idx1, idx2]) => {
+        const angle1 = (idx1 / photoData.length) * 2 * Math.PI - Math.PI / 2;
+        const x1 = centerX + radius * Math.cos(angle1) + 60;
+        const y1 = centerY + radius * Math.sin(angle1) + 60;
+
+        const angle2 = (idx2 / photoData.length) * 2 * Math.PI - Math.PI / 2;
+        const x2 = centerX + radius * Math.cos(angle2) + 60;
+        const y2 = centerY + radius * Math.sin(angle2) + 60;
+
+        const line = document.createElement('div');
+        line.className = 'connection-line';
+
+        const length = Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
+        const angle = Math.atan2(y2 - y1, x2 - x1) * (180 / Math.PI);
+
+        line.style.width = length + 'px';
+        line.style.left = x1 + 'px';
+        line.style.top = y1 + 'px';
+        line.style.transform = `rotate(${angle}deg)`;
+
+        container.appendChild(line);
+      });
+    }
+
+    function handleNodeSingleClick(node) {
+      const clickCount = parseInt(node.dataset.clickCount);
+
+      if (clickCount === 0) {
+        node.classList.add('zoomed');
+        node.dataset.clickCount = '1';
+      } else if (clickCount === 1) {
+        node.classList.add('flipped');
+        node.dataset.clickCount = '2';
+      } else if (clickCount === 2) {
+        node.classList.remove('flipped');
+        node.dataset.clickCount = '1';
+      }
+    }
+
+    function handleNodeDoubleClick(node) {
+      node.classList.remove('zoomed', 'flipped');
+      node.dataset.clickCount = '0';
+    }
+
+    // Create stars
+    function createStars() {
+      const container = document.getElementById('starsContainer');
+      container.innerHTML = '';
+      for (let i = 0; i < 200; i++) {
+        const star = document.createElement('div');
+        star.className = 'star';
+        star.style.left = Math.random() * 100 + '%';
+        star.style.top = Math.random() * 100 + '%';
+        star.style.width = Math.random() * 3 + 1 + 'px';
+        star.style.height = star.style.width;
+        star.style.animationDelay = Math.random() * 3 + 's';
+        star.style.background = config.star_color || defaultConfig.star_color;
+        container.appendChild(star);
+      }
+    }
+
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener('deviceorientation', (event) => {
+        const container = document.getElementById('starsContainer');
+        const beta = event.beta || 0;
+        const gamma = event.gamma || 0;
+        const x = gamma / 10;
+        const y = beta / 10;
+        container.style.transform = `translate(${x}px, ${y}px)`;
+      });
+    }
+
+    document.addEventListener('mousemove', (e) => {
+      if (window.innerWidth > 768) {
+        const container = document.getElementById('starsContainer');
+        const x = (e.clientX - window.innerWidth / 2) / 50;
+        const y = (e.clientY - window.innerHeight / 2) / 50;
+        container.style.transform = `translate(${x}px, ${y}px)`;
+      }
+    });
+
+    // Fireworks
+    function createFirework() {
+      const container = document.getElementById('fireworksContainer');
+      const colors = ['#FF1461', '#18FF92', '#5A87FF', '#FBF38C', '#FF6B6B', '#FFD93D', '#6BCF7F'];
+      const color = colors[Math.floor(Math.random() * colors.length)];
+
+      const startX = Math.random() * window.innerWidth;
+      const startY = window.innerHeight;
+      const endX = startX + (Math.random() - 0.5) * 100;
+      const endY = Math.random() * window.innerHeight * 0.5;
+
+      const trail = document.createElement('div');
+      trail.className = 'firework-trail';
+      trail.style.left = startX + 'px';
+      trail.style.top = startY + 'px';
+      trail.style.backgroundColor = color;
+      container.appendChild(trail);
+
+      gsap.to(trail, {
+        x: endX - startX,
+        y: endY - startY,
+        duration: 0.8,
+        ease: "power2.out",
+        onComplete: () => {
+          trail.remove();
+          explode(endX, endY, color);
+        }
+      });
+    }
+
+    function explode(x, y, color) {
+      const container = document.getElementById('fireworksContainer');
+      const particleCount = 40 + Math.floor(Math.random() * 30);
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'firework-particle';
+        particle.style.left = x + 'px';
+        particle.style.top = y + 'px';
+        particle.style.backgroundColor = color;
+        container.appendChild(particle);
+
+        const angle = (Math.PI * 2 * i) / particleCount;
+        const velocity = 80 + Math.random() * 120;
+        const tx = Math.cos(angle) * velocity;
+        const ty = Math.sin(angle) * velocity;
+
+        gsap.to(particle, {
+          x: tx,
+          y: ty,
+          opacity: 0,
+          duration: 1 + Math.random() * 0.5,
+          ease: "power2.out",
+          onComplete: () => particle.remove()
+        });
+      }
+    }
+
+    function startFireworks() {
+      if (fireworkInterval) return;
+      fireworkInterval = setInterval(createFirework, 300);
+      for (let i = 0; i < 5; i++) {
+        setTimeout(createFirework, i * 100);
+      }
+    }
+
+    function stopFireworks() {
+      if (fireworkInterval) {
+        clearInterval(fireworkInterval);
+        fireworkInterval = null;
+      }
+      document.getElementById('fireworksContainer').innerHTML = '';
+    }
+
+    // Catch button
+    const catchButton = document.getElementById('catchButton');
+    catchButton.addEventListener('click', function (e) {
+      e.preventDefault();
+      catchAttempts++;
+
+      if (catchAttempts < 5) {
+        const maxX = window.innerWidth - 200;
+        const maxY = 400;
+        const newX = Math.random() * maxX;
+        const newY = Math.random() * maxY;
+
+        gsap.to(catchButton, {
+          x: newX - catchButton.offsetLeft,
+          y: newY - catchButton.offsetTop,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      } else {
+        catchButton.textContent = "You Got Me! 💝";
+        catchButton.style.background = "linear-gradient(to right, #10b981, #3b82f6)";
+        setTimeout(() => {
+          document.getElementById('gamesGrid').style.display = 'block';
+          gsap.from('#gamesGrid', { opacity: 0, y: 50, duration: 1 });
+        }, 500);
+      }
+    });
+
+    // STAGE 1: Love Meter
+    const loveMeterBtn = document.getElementById('loveMeterBtn');
+    loveMeterBtn.addEventListener('click', function () {
+      if (loveMeterPhase === 'normal') {
+        loveLevel += 10;
+        if (loveLevel > 100) loveLevel = 100;
+
+        document.getElementById('loveMeter').style.width = loveLevel + '%';
+        document.getElementById('lovePercentage').textContent = loveLevel + '%';
+
+        if (loveLevel >= 90) {
+          loveMeterPhase = 'decreasing';
+          this.disabled = true;
+          this.textContent = "Bhai Ruk Ja! 😂";
+
+          const prankMsg = document.createElement('div');
+          prankMsg.id = 'prankMessage';
+          prankMsg.className = 'text-yellow-300 text-center text-xl font-bold mt-3 animate-pulse';
+          prankMsg.textContent = '😱 Oh No! It\'s Going Down! 😱';
+          this.parentElement.insertBefore(prankMsg, this);
+
+          setTimeout(() => {
+            decreaseInterval = setInterval(() => {
+              loveLevel -= 5;
+              if (loveLevel <= 0) {
+                loveLevel = 0;
+                clearInterval(decreaseInterval);
+                loveMeterPhase = 'hard';
+                loveMeterBtn.disabled = false;
+                loveMeterBtn.textContent = "Click Faster! 💪";
+                prankMsg.textContent = '💪 Yes You Can Do It! Keep Clicking! 🔥';
+              }
+              document.getElementById('loveMeter').style.width = loveLevel + '%';
+              document.getElementById('lovePercentage').textContent = loveLevel + '%';
+            }, 100);
+          }, 1000);
+        }
+      } else if (loveMeterPhase === 'hard') {
+        loveLevel += Math.floor(Math.random() * 2) + 2;
+        if (loveLevel > 100) loveLevel = 100;
+
+        document.getElementById('loveMeter').style.width = loveLevel + '%';
+        document.getElementById('lovePercentage').textContent = loveLevel + '%';
+
+        const prankMsg = document.getElementById('prankMessage');
+        if (loveLevel < 30) {
+          prankMsg.textContent = '💪 Keep Going! You Got This! 🔥';
+        } else if (loveLevel < 60) {
+          prankMsg.textContent = '🌟 Almost There! Don\'t Give Up! ✨';
+        } else if (loveLevel < 90) {
+          prankMsg.textContent = '🚀 So Close! Keep Clicking! 💖';
+        } else {
+          prankMsg.textContent = '🎉 Final Push! You Can Do It! 💕';
+        }
+
+        if (loveLevel >= 100) {
+          this.textContent = "Love Meter Complete! 💖";
+          this.disabled = true;
+          prankMsg.textContent = '🎊 Amazing! Unlocking Task 1! 🎊';
+
+          setTimeout(() => {
+            document.getElementById('stage1').style.display = 'none';
+            document.getElementById('task1').style.display = 'block';
+            gsap.from('#task1', { opacity: 0, scale: 0.8, duration: 0.8 });
+          }, 2000);
+        }
+      }
+    });
+
+    // TASK 1: Type Magic Words
+    document.getElementById('magicWordsBtn').addEventListener('click', function () {
+      const input = document.getElementById('magicWordsInput').value.trim().toUpperCase();
+      const hint = document.getElementById('magicWordsHint');
+
+      if (input === 'I LOVE SATYAM') {
+        hint.textContent = '✅ Correct! Unlocking Stage 2...';
+        hint.className = 'text-green-300 text-lg font-bold mb-4 animate-pulse';
+
+        setTimeout(() => {
+          document.getElementById('task1').style.display = 'none';
+          document.getElementById('stage2').style.display = 'block';
+          gsap.from('#stage2', { opacity: 0, scale: 0.8, duration: 0.8 });
+        }, 2000);
+      } else {
+        hint.textContent = '❌ Try again! Hint: Think about who you love! 💕';
+        hint.className = 'text-red-300 text-sm mb-4 animate-pulse';
+        document.getElementById('magicWordsInput').value = '';
+      }
+    });
+
+    // Allow Enter key for Task 1
+    document.getElementById('magicWordsInput').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        document.getElementById('magicWordsBtn').click();
+      }
+    });
+
+    // STAGE 2: Quiz
+    document.getElementById('quizStartBtn').addEventListener('click', function () {
+      if (quizDecreaseInterval) {
+        clearInterval(quizDecreaseInterval);
+        quizDecreaseInterval = null;
+      }
+
+      const existingPrank = document.getElementById('quizPrankMessage');
+      if (existingPrank) {
+        existingPrank.remove();
+      }
+
+      quizIndex = 0;
+      if (quizPhase === 'normal') {
+        quizCorrect = 0;
+        document.getElementById('quizMeter').style.width = '0%';
+        document.getElementById('quizScore').textContent = 'Score: 0/8';
+      }
+
+      showQuizQuestion();
+      this.style.display = 'none';
+    });
+
+    function showQuizQuestion() {
+      if (quizIndex < quizQuestions.length) {
+        const q = quizQuestions[quizIndex];
+        document.getElementById('quizQuestion').innerHTML = `<span class="text-2xl mr-2">${q.emoji}</span>${q.q}`;
+
+        const optionsDiv = document.getElementById('quizOptions');
+        optionsDiv.innerHTML = '';
+
+        q.a.forEach((answer, idx) => {
+          const btn = document.createElement('button');
+          btn.textContent = answer;
+          btn.className = 'w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded transition text-left';
+          btn.addEventListener('click', () => checkQuizAnswer(idx, q.correct));
+          optionsDiv.appendChild(btn);
+        });
+      }
+    }
+
+    function checkQuizAnswer(selected, correct) {
+      if (quizPhase === 'normal') {
+        if (selected === correct) {
+          quizCorrect++;
+        }
+        quizIndex++;
+
+        const percentage = (quizCorrect / quizQuestions.length) * 100;
+        document.getElementById('quizMeter').style.width = percentage + '%';
+        document.getElementById('quizScore').textContent = `Score: ${quizCorrect}/8`;
+
+        if (quizIndex < quizQuestions.length) {
+          showQuizQuestion();
+        } else {
+          if (quizCorrect >= 7) {
+            quizPhase = 'decreasing';
+            document.getElementById('quizQuestion').innerHTML = '😱 Wait! Your Score Is Dropping! 😱';
+            document.getElementById('quizOptions').innerHTML = '';
+
+            const prankMsg = document.createElement('div');
+            prankMsg.id = 'quizPrankMessage';
+            prankMsg.className = 'text-yellow-300 text-center text-xl font-bold mt-3 animate-pulse';
+            prankMsg.textContent = '📉 Oh No! Keep Answering To Save It! 📉';
+            document.getElementById('quizContent').appendChild(prankMsg);
+
+            setTimeout(() => {
+              quizDecreaseInterval = setInterval(() => {
+                quizCorrect -= 1;
+                if (quizCorrect <= 0) {
+                  quizCorrect = 0;
+                  clearInterval(quizDecreaseInterval);
+                  quizPhase = 'hard';
+                  quizIndex = 0;
+                  document.getElementById('quizStartBtn').style.display = 'block';
+                  document.getElementById('quizStartBtn').textContent = 'Answer Again - Harder Mode! 💪';
+                  prankMsg.textContent = '🔥 Now The Real Challenge Begins! 🔥';
+                }
+                const percentage = (quizCorrect / quizQuestions.length) * 100;
+                document.getElementById('quizMeter').style.width = percentage + '%';
+                document.getElementById('quizScore').textContent = `Score: ${quizCorrect}/8`;
+              }, 200);
+            }, 1000);
+          } else {
+            document.getElementById('quizQuestion').innerHTML = "Good try! Try again! 💜";
+            document.getElementById('quizOptions').innerHTML = '';
+            document.getElementById('quizStartBtn').style.display = 'block';
+            quizIndex = 0;
+            quizCorrect = 0;
+            document.getElementById('quizMeter').style.width = '0%';
+            document.getElementById('quizScore').textContent = `Score: 0/8`;
+          }
+        }
+      } else if (quizPhase === 'hard') {
+        if (selected === correct) {
+          quizCorrect++;
+        } else {
+          quizCorrect = 0;
+          quizIndex = 0;
+          const prankMsg = document.getElementById('quizPrankMessage');
+          prankMsg.textContent = '❌ Oops! Starting Over! Must Get ALL Right! ❌';
+          setTimeout(() => {
+            showQuizQuestion();
+            prankMsg.textContent = '🔥 No Mistakes Allowed! Perfect Score Only! 🔥';
+          }, 1000);
+          const percentage = (quizCorrect / quizQuestions.length) * 100;
+          document.getElementById('quizMeter').style.width = percentage + '%';
+          document.getElementById('quizScore').textContent = `Score: ${quizCorrect}/8`;
+          return;
+        }
+
+        quizIndex++;
+        const percentage = (quizCorrect / quizQuestions.length) * 100;
+        document.getElementById('quizMeter').style.width = percentage + '%';
+        document.getElementById('quizScore').textContent = `Score: ${quizCorrect}/8`;
+
+        const prankMsg = document.getElementById('quizPrankMessage');
+        if (quizCorrect < 3) {
+          prankMsg.textContent = '💪 Keep Going! No Mistakes! 🔥';
+        } else if (quizCorrect < 6) {
+          prankMsg.textContent = '🌟 You\'re Doing It! Stay Focused! ✨';
+        } else if (quizCorrect < 8) {
+          prankMsg.textContent = '🚀 Almost There! Don\'t Mess Up! 💖';
+        }
+
+        if (quizIndex < quizQuestions.length) {
+          showQuizQuestion();
+        } else {
+          if (quizCorrect === 8) {
+            document.getElementById('quizQuestion').innerHTML = "🎊 PERFECT! Unlocking Task 2! 🎊";
+            document.getElementById('quizOptions').innerHTML = '';
+            if (prankMsg) {
+              prankMsg.textContent = '💜 You\'re A Champion! 💜';
+            }
+
+            setTimeout(() => {
+              document.getElementById('stage2').style.display = 'none';
+              document.getElementById('task2').style.display = 'block';
+              gsap.from('#task2', { opacity: 0, scale: 0.8, duration: 0.8 });
+            }, 2000);
+          } else {
+            document.getElementById('quizQuestion').innerHTML = "Try harder 💦 baby! You need all 8 correct! 💜";
+            document.getElementById('quizOptions').innerHTML = '';
+            document.getElementById('quizStartBtn').style.display = 'block';
+          }
+        }
+      }
+    }
+
+    /* // TASK 2: Heart Collector */
+    document.getElementById('heartCollectorBtn').addEventListener('click', function () {
+      this.disabled = true;
+      heartCollectorScore = 0;
+      heartCollectorTimer = 30;
+      document.getElementById('heartScore').textContent = '0 / 15';
+      document.getElementById('heartTimer').textContent = '30s';
+
+      const area = document.getElementById('heartCollectorArea');
+      area.innerHTML = '';
+
+      heartCollectorInterval = setInterval(() => {
+        heartCollectorTimer--;
+        document.getElementById('heartTimer').textContent = heartCollectorTimer + 's';
+
+        if (heartCollectorTimer <= 0 || heartCollectorScore >= 15) {
+          clearInterval(heartCollectorInterval);
+          clearInterval(heartSpawnInterval);
+
+          if (heartCollectorScore >= 15) {
+            area.innerHTML = '<div class="text-white text-2xl text-center flex items-center justify-center h-full">🎉 Perfect! Unlocking Stage 3... 🎉</div>';
+            setTimeout(() => {
+              document.getElementById('task2').style.display = 'none';
+              document.getElementById('stage3').style.display = 'block';
+              gsap.from('#stage3', { opacity: 0, scale: 0.8, duration: 0.8 });
+            }, 2000);
+          } else {
+            area.innerHTML = '<div class="text-white text-xl text-center flex items-center justify-center h-full">Time\'s up! Try again! 💕</div>';
+            setTimeout(() => {
+              document.getElementById('heartCollectorBtn').disabled = false;
+            }, 2000);
+          }
+        }
+      }, 1000);
+
+      heartSpawnInterval = setInterval(() => {
+        spawnFallingHeart();
+      }, 800);
+    });
+
+    function spawnFallingHeart() {
+      const area = document.getElementById('heartCollectorArea');
+      const heart = document.createElement('div');
+      heart.className = 'falling-heart';
+
+      const hasS = Math.random() > 0.4;
+      heart.textContent = hasS ? '💖S' : '💔';
+      heart.dataset.hasS = hasS;
+
+      heart.style.left = Math.random() * (area.offsetWidth - 40) + 'px';
+      heart.style.top = '-40px';
+
+      const duration = 3 + Math.random() * 2;
+      heart.style.animationDuration = duration + 's';
+
+      heart.addEventListener('click', function () {
+        if (this.dataset.hasS === 'true') {
+          heartCollectorScore++;
+          document.getElementById('heartScore').textContent = heartCollectorScore + ' / 15';
+          this.remove();
+        }
+      });
+
+      area.appendChild(heart);
+
+      setTimeout(() => {
+        if (heart.parentElement) {
+          heart.remove();
+        }
+      }, duration * 1000);
+    }
+
+    /* // STAGE 3: Memory Match */
+    document.getElementById('memoryStartBtn').addEventListener('click', function () {
+      startMemoryGame();
+      this.style.display = 'none';
+    });
+
+    function startMemoryGame() {
+      const symbols = ['💖', '💖', '🌟', '🌟', '👑', '👑'];
+      memoryCards = symbols.sort(() => Math.random() - 0.5);
+      memoryFlipped = [];
+      memoryMatched = 0;
+
+      const grid = document.getElementById('memoryGrid');
+      grid.innerHTML = '';
+
+      memoryCards.forEach((symbol, idx) => {
+        const card = document.createElement('div');
+        card.className = 'memory-card aspect-square';
+        card.innerHTML = `
+          <div class="memory-card-inner">
+            <div class="memory-card-front bg-blue-600">S</div>
+            <div class="memory-card-back bg-blue-400">${symbol}</div>
+          </div>
+        `;
+        card.addEventListener('click', () => flipMemoryCard(idx, card));
+        grid.appendChild(card);
+      });
+    }
+
+    function flipMemoryCard(idx, cardElement) {
+      if (memoryFlipped.length === 2 || cardElement.classList.contains('flipped')) return;
+
+      cardElement.classList.add('flipped');
+      memoryFlipped.push({ idx, element: cardElement, symbol: memoryCards[idx] });
+
+      if (memoryFlipped.length === 2) {
+        setTimeout(checkMemoryMatch, 800);
+      }
+    }
+
+    function checkMemoryMatch() {
+      const [card1, card2] = memoryFlipped;
+
+      if (card1.symbol === card2.symbol) {
+        memoryMatched++;
+        document.getElementById('memoryStatus').textContent = `Matches: ${memoryMatched}/3`;
+
+        if (memoryMatched === 3) {
+          setTimeout(() => {
+            document.getElementById('stage3').style.display = 'none';
+            document.getElementById('task3').style.display = 'block';
+            gsap.from('#task3', { opacity: 0, scale: 0.8, duration: 0.8 });
+            startFireworks();
+          }, 1000);
+        }
+      } else {
+        card1.element.classList.remove('flipped');
+        card2.element.classList.remove('flipped');
+      }
+
+      memoryFlipped = [];
+    }
+
+    /* // Countdown logic */
+    let testEndTime = null;
+    function updateCountdown() {
+      const now = new Date().getTime();
+
+      if (!testEndTime) {
+        testEndTime = now + 10000;
+      }
+      const distance = testEndTime - now;
+
+      if (distance > 0) {
+        if (isCelebrating) {
+          isCelebrating = false;
+          stopFireworks();
+          document.getElementById('mainTitle').className = 'title mb-12 text-center px-4';
+          document.getElementById('mainTitle').textContent = config.countdown_title || defaultConfig.countdown_title;
+          document.getElementById('countdownContainer').style.display = 'flex';
+          document.getElementById('scrollIndicator').style.display = 'none';
+          document.getElementById('gamesSection').style.display = 'none';
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = String(days).padStart(2, '0');
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+        document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+      } else {
+        if (!isCelebrating) {
+          isCelebrating = true;
+          const titleElement = document.getElementById('mainTitle');
+
+          gsap.to(document.getElementById('countdownContainer'), {
+            opacity: 0,
+            scale: 0.8,
+            duration: 0.5,
+            onComplete: () => {
+              document.getElementById('countdownContainer').style.display = 'none';
+            }
+          });
+
+          titleElement.className = 'celebration-title mb-12 text-center px-4';
+          titleElement.textContent = config.celebration_title || defaultConfig.celebration_title;
+
+          const scrollIndicator = document.getElementById('scrollIndicator');
+          scrollIndicator.style.display = 'block';
+          gsap.from(scrollIndicator, { opacity: 0, y: -20, duration: 1, delay: 1 });
+
+          const gamesSection = document.getElementById('gamesSection');
+          gamesSection.style.display = 'block';
+          gsap.from(gamesSection, { opacity: 0, y: 50, duration: 1, delay: 1.5 });
+
+          startFireworks();
+
+          /* // Play firework sound */
+          const fireworkSound = document.getElementById('fireworkSound');
+          fireworkSound.volume = 0.7; // Set volume to 70%
+          fireworkSound.play().catch(e => console.log("Audio play error:", e));
+        }
+
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+      }
+    }
+
+    /* // Mute button functionality */
+
+    const muteButton = document.getElementById('muteButton');
+    const fireworkSound = document.getElementById('fireworkSound');
+    let isMuted = false;
+    
+    // Temporary function to jump to photos for testing
+    function jumpToPhotos() {
+      // Show the games section if not already visible
+      document.getElementById('gamesSection').style.display = 'block';
+      
+      // Show task 3 directly and hide other sections
+      document.getElementById('stage1').style.display = 'none';
+      document.getElementById('task1').style.display = 'none';
+      document.getElementById('stage2').style.display = 'none';
+      document.getElementById('task2').style.display = 'none';
+      document.getElementById('stage3').style.display = 'none';
+      document.getElementById('task3').style.display = 'block';
+      
+      // Ensure photo nodes are created and positioned
+      const container = document.getElementById('photoNetwork');
+      container.innerHTML = ''; // Clear existing nodes
+      createPhotoNodes();
+      updatePhotoNodePositions();
+      
+      // Scroll to the photo section after a brief delay to ensure rendering
+      setTimeout(() => {
+        document.getElementById('task3').scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    }
+
+    if (muteButton && fireworkSound) {
+      muteButton.addEventListener('click', function () {
+        isMuted = !isMuted;
+        fireworkSound.muted = isMuted;
+
+        if (isMuted) {
+          this.textContent = 'Unmute 🔊';
+        } else {
+          this.textContent = 'Mute 🔇';
+
+          // Only play if we're in celebration mode
+          if (isCelebrating) {
+            fireworkSound.play().catch(e => console.log("Audio play error:", e));
+          }
+        }
+      });
+    }
+
+    async function onConfigChange(newConfig) {
+      config = { ...config, ...newConfig };
+
+      if (!isCelebrating) {
+        document.getElementById('mainTitle').textContent = config.countdown_title || defaultConfig.countdown_title;
+      } else {
+        document.getElementById('mainTitle').textContent = config.celebration_title || defaultConfig.celebration_title;
+      }
+
+      document.getElementById('gameIntro').textContent = config.game_intro_text || defaultConfig.game_intro_text;
+
+      const galaxyBg = document.querySelector('.galaxy-bg');
+      galaxyBg.style.background = `radial-gradient(ellipse at bottom, ${config.background_start || defaultConfig.background_start} 0%, ${config.background_end || defaultConfig.background_end} 100%)`;
+
+      const titleElement = document.getElementById('mainTitle');
+      titleElement.style.color = config.text_color || defaultConfig.text_color;
+      titleElement.style.textShadow = `0 0 30px ${config.primary_color || defaultConfig.primary_color}80, 0 0 60px ${config.primary_color || defaultConfig.primary_color}50`;
+
+      const numbers = document.querySelectorAll('.countdown-number');
+      numbers.forEach(num => {
+        num.style.color = config.text_color || defaultConfig.text_color;
+        num.style.textShadow = `0 0 20px ${config.primary_color || defaultConfig.primary_color}80, 0 0 40px ${config.primary_color || defaultConfig.primary_color}50`;
+      });
+
+      const labels = document.querySelectorAll('.countdown-label');
+      labels.forEach(label => {
+        label.style.color = config.text_color || defaultConfig.text_color;
+      });
+
+      createStars();
+    }
+
+    // Initialize
+    createStars();
+    createPhotoNodes();
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (cfg) => ({
+          recolorables: [
+            {
+              get: () => cfg.background_start || defaultConfig.background_start,
+              set: (value) => {
+                cfg.background_start = value;
+                window.elementSdk.setConfig({ background_start: value });
+              }
+            },
+            {
+              get: () => cfg.background_end || defaultConfig.background_end,
+              set: (value) => {
+                cfg.background_end = value;
+                window.elementSdk.setConfig({ background_end: value });
+              }
+            },
+            {
+              get: () => cfg.text_color || defaultConfig.text_color,
+              set: (value) => {
+                cfg.text_color = value;
+                window.elementSdk.setConfig({ text_color: value });
+              }
+            },
+            {
+              get: () => cfg.primary_color || defaultConfig.primary_color,
+              set: (value) => {
+                cfg.primary_color = value;
+                window.elementSdk.setConfig({ primary_color: value });
+              }
+            },
+            {
+              get: () => cfg.star_color || defaultConfig.star_color,
+              set: (value) => {
+                cfg.star_color = value;
+                window.elementSdk.setConfig({ star_color: value });
+              }
+            }
+          ],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ['countdown_title', cfg.countdown_title || defaultConfig.countdown_title],
+          ['celebration_title', cfg.celebration_title || defaultConfig.celebration_title],
+          ['game_intro_text', cfg.game_intro_text || defaultConfig.game_intro_text]
+        ])
+      });
+
+      config = window.elementSdk.config;
+      onConfigChange(config);
+    }
+  </script>
+  <script>(function () { function c() { var b = a.contentDocument || a.contentWindow.document; if (b) { var d = b.createElement('script'); d.innerHTML = "window.__CF$cv$params={r:'9b695a30c7c945af',t:'MTc2NzE3OTY1Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);"; b.getElementsByTagName('head')[0].appendChild(d) } } if (document.body) { var a = document.createElement('iframe'); a.height = 1; a.width = 1; a.style.position = 'absolute'; a.style.top = 0; a.style.left = 0; a.style.border = 'none'; a.style.visibility = 'hidden'; document.body.appendChild(a); if ('loading' !== document.readyState) c(); else if (window.addEventListener) document.addEventListener('DOMContentLoaded', c); else { var e = document.onreadystatechange || function () { }; document.onreadystatechange = function (b) { e(b); 'loading' !== document.readyState && (document.onreadystatechange = e, c()) } } } })();</script>
+</body>
+
+</html>
